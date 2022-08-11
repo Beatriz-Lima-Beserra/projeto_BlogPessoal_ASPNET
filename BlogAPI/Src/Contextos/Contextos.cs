@@ -6,9 +6,9 @@ namespace BlogAPI.Src.Contextos
 /// <summary>
 /// <para>Resumo: Classe contexto, responsavel por carregar contexto e definir
 /// DbSets</para>
-/// <para>Criado por: Generation</para>
+/// <para>Criado por: Beatriz</para>
 /// <para>Versão: 1.0</para>
-/// <para>Data: 17/07/2022</para>
+/// <para>Data: 02/08/2022</para>
 /// </summary>
 
 {
@@ -17,12 +17,11 @@ namespace BlogAPI.Src.Contextos
         #region Atributos
 
         public DbSet<Usuario> Usuarios { get; set; }
-
         public DbSet<Tema> Temas { get; set; }
-
         public DbSet<Postagem> Postagens { get; set; }
 
         #endregion
+
 
         #region Construtores
 

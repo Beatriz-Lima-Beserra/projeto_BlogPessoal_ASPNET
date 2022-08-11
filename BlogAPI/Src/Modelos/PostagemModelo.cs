@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 /// <summary>
 /// <para>Resumo: Classe responsavel por representar tb_postagens no banco.
 /// </ para >
-/// <para>Criado por: Generation</para>
+/// <para>Criado por: Beatriz</para>
 /// <para>Versão: 1.0</para>
-/// <para>Data: 17/07/2022</para>
+/// <para>Data: 02/08/2022</para>
 /// </summary>
 
 namespace BlogAPI.Src.Modelos
