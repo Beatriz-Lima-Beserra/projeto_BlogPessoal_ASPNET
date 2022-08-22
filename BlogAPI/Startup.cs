@@ -37,6 +37,7 @@ namespace BlogAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Contexto
+            //Deixei comentando para não haver conflito no deploy, pois no heroku utilizo o postgre
             //services.AddDbContext<BlogPessoalContexto>(opt => opt.UseSqlServer(Configuration["ConnectionStringsDev:DefaultConnection"]));
 
             // Configuraçãp Banco de Dados
