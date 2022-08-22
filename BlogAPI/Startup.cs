@@ -37,7 +37,7 @@ namespace BlogAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Contexto
-            services.AddDbContext<BlogPessoalContexto>(opt => opt.UseSqlServer(Configuration["ConnectionStringsDev:DefaultConnection"]));
+            //services.AddDbContext<BlogPessoalContexto>(opt => opt.UseSqlServer(Configuration["ConnectionStringsDev:DefaultConnection"]));
 
             // Configuraçãp Banco de Dados
             if (Configuration["Enviroment:Start"] == "PROD")
