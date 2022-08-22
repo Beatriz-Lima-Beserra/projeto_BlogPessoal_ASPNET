@@ -31,6 +31,19 @@ namespace BlogAPI.Src.Controladores
 
 
         #region Métodos
+        [HttpPost]
+        public async Task<ActionResult> NovoPostagemAsync([FromBody] Postagem postagem)
+        {
+            try
+            {
+                await _repositorio.NovoPostagemAsync(postagem);
+                return Created($"api/Postagens", postagem);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Mensagem = ex.Message });
+            }
+        }
 
         [HttpGet]
         public async Task<ActionResult> PegarTodasPostagensAsync()
@@ -56,19 +69,6 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> NovoPostagemAsync([FromBody] Postagem postagem)
-        {
-            try
-            {
-                await _repositorio.NovoPostagemAsync(postagem);
-                return Created($"api/Postagens", postagem);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Mensagem = ex.Message });
-            }
-        }
 
         [HttpPut]
         public async Task<ActionResult> AtualizarPostagemAsync([FromBody] Postagem postagem)

@@ -32,6 +32,19 @@ namespace BlogAPI.Src.Controladores
 
         #region Métodos
 
+        [HttpPost]
+        public async Task<ActionResult> NovoTemaAsync([FromBody] Tema tema)
+        {
+            try
+            {
+                await _repositorio.NovoTemaAsync(tema);
+                return Created($"api/Temas", tema);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Mensagem = ex.Message });
+            }
+        }
         [HttpGet]
         public async Task<ActionResult> PegarTodosTemasAsync()
         {
@@ -56,19 +69,6 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> NovoTemaAsync([FromBody] Tema tema)
-        {
-            try
-            {
-                await _repositorio.NovoTemaAsync(tema);
-                return Created($"api/Temas", tema);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Mensagem = ex.Message });
-            }
-        }
 
         [HttpPut]
         public async Task<ActionResult> AtualizarTemaAsync([FromBody] Tema tema)

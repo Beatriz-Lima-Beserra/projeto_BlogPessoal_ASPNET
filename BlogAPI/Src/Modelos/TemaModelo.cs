@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
+namespace BlogAPI.Src.Modelos
+{
 /// <summary>
 /// <para>Resumo: Classe responsavel por representar tb_temas no banco.
 /// </para>
@@ -10,10 +12,6 @@ using System.Text.Json.Serialization;
 /// <para>Versão: 1.0</para>
 /// <para>Data: 02/08/2022</para>
 /// </summary>
-
-namespace BlogAPI.Src.Modelos
-{
-
     [Table("tb_temas")]
     public class Tema
     {

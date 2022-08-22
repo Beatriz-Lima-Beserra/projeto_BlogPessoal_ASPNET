@@ -8,6 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogAPI.Src.Repositorios.Implentacoes
 {
+
+    /// <summary>
+    /// <para>Resumo: Classe responsavel por implementar ITema</para>
+    /// <para>Criado por: Beatriz</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 02/08/2022</para>
+    /// </summary>
     public class TemaRepositorio : ITema
     {
 
@@ -47,6 +54,7 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
                 return auxiliar != null;
             }
         }
+
 
         public async Task NovoTemaAsync(Tema tema)
         {
