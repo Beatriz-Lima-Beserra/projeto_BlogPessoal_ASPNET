@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BlogAPI.Src.Contextos
 
 /// <summary>
-/// <para>Resumo: Classe contexto, responsavel por carregar contexto e definir
+/// <para>Resumo: Classe contexto, responsável por carregar contexto e definir
 /// DbSets</para>
 /// <para>Criado por: Beatriz</para>
 /// <para>Versão: 1.0</para>

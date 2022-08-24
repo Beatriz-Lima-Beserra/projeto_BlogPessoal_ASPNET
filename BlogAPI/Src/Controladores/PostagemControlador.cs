@@ -27,10 +27,34 @@ namespace BlogAPI.Src.Controladores
             _repositorio = repositorio;
         }
 
-        #endregion   
+        #endregion
 
 
         #region Métodos
+
+        /// <summary>
+        /// Criar nova Postagem 
+        /// </summary>
+        /// <param name="postagem">Contrutor para criar postagem</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// POST /api/Postagem
+        /// {
+        /// "titulo": "Aprendendo sobre crud",
+        /// "descricao": "Explicação sobre crud de uma api",
+        /// "foto": "URLFOTO",
+        /// "Criador": { 
+        ///     "Id": n°
+        /// "Tema": { 
+        ///     "Id": n°
+        /// }
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="201">Retorna usuario criado</response>
+        /// <response code="401">E-mail ja cadastrado</response>
         [HttpPost]
         public async Task<ActionResult> NovoPostagemAsync([FromBody] Postagem postagem)
         {
@@ -45,6 +69,13 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary>
+        /// Pegar Todas Postagens
+        /// </summary>
+        /// <param name="postagem">Postagem do usuario</param>
+        /// <returns>ActionResult</returns>
+        /// <response code="200">Retorna as postagens</response>
+        /// <response code="404">Postagem não existente</response>
         [HttpGet]
         public async Task<ActionResult> PegarTodasPostagensAsync()
         {
@@ -55,7 +86,13 @@ namespace BlogAPI.Src.Controladores
             return Ok(lista);
         }
 
-
+        /// <summary>
+        /// Pegar Postagens Pelo Id
+        /// </summary>
+        /// <param name="idPostagem">Id da Postagem</param>
+        /// <returns>ActionResult</returns>
+        /// <response code="200">Retorna postagem pelo Id</response>
+        /// <response code="404">Id da postagem não pode ser nulo</response>
         [HttpGet("id/{idPostagem}")]
         public async Task<ActionResult> PegarPostagemPeloIdAsync([FromRoute] int idPostagem)
         {
@@ -69,7 +106,29 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-
+        /// <summary>
+        /// Atualizar Postagem
+        /// </summary>
+        /// <param name="postagem">Construtor para atualizar postagem</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// PUT /api/Postagem
+        /// {
+        /// "titulo": "Aprendendo sobre crud",
+        /// "descricao": "Explicação sobre crud de uma api",
+        /// "foto": "URLFOTO",
+        /// "Criador": { 
+        ///     "Id": n°
+        /// "Tema": { 
+        ///     "Id": n°
+        /// }
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="200">Retorna tema atualizado</response>
+        /// <response code="400">Tema nao localizado</response>
         [HttpPut]
         public async Task<ActionResult> AtualizarPostagemAsync([FromBody] Postagem postagem)
         {
@@ -84,6 +143,22 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary>
+        /// Deletar Postagem
+        /// </summary>
+        /// <param name="idPostagem">Deletar Postagem</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// DELETE /api/Postagem
+        /// {
+        /// "Id": "valor do Id",
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="201">Retorna confirmação de postagem deletada</response>
+        /// <response code="401">Id não encontrado</response>
         [HttpDelete("id/{idPostagem}")]
         public async Task<ActionResult> DeletarPostagemAsync([FromRoute] int idPostagem)
         {

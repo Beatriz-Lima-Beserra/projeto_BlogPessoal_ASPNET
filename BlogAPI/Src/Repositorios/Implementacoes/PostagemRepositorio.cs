@@ -8,6 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogAPI.Src.Repositorios.Implentacoes
 {
+
+    /// <summary>
+    /// <para>Resumo: Classe responsavel por implementar IPostagem</para>
+    /// <para>Criado por: Beatriz</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 23/08/2022</para>
+    /// </summary>
     public class PostagemRepositorio : IPostagem
     {
 
@@ -28,6 +35,11 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
 
         #region Métodos
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para pegar todas postagens</para>
+        /// </summary>
+        /// <param name="List">Lista das postagens</param>
+        /// <return>PostagemModelo</return>
         public async Task<List<Postagem>> PegarTodosPostagensAsync()
         {
             return await _contexto.Postagens
@@ -36,6 +48,11 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
                 .ToListAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para pegar uma postagem pelo id</para>
+        /// </summary>
+        /// <param name="id">Postagem do usuario</param>
+        /// <return>PostagemModelo</return>
         public async Task<Postagem> PegarPostagemPeloIdAsync(int id)
         {
             if (!ExisteId(id)) throw new Exception("id do Tema não encontrado");
@@ -54,6 +71,10 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
             }
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para salvar uma nova postagem</para>
+        /// </summary>
+        /// <param name="postagem">Construtor para cadastrar postagem</param>
         public async Task NovoPostagemAsync(Postagem postagem)
         {
             if (!ExisteIdCriador(postagem.Criador.Id)) throw new Exception("id do Usuario não encontrado");
@@ -86,6 +107,12 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
             }
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para atualizar postagem</para>
+        /// </summary>
+        /// <param> 'name="postagem">Construtor para atualizar postagem</param>
+        /// <exception cref="Exception">Postagem já existe</exception>
+        /// <exception cref="Exception">Postagem já existe</exception>
         public async Task AtualizarPostagemAsync(Postagem postagem)
         {
             if (!ExisteIdTema(postagem.Tema.Id)) throw new Exception("id do Tema não encontrado");
@@ -107,12 +134,17 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
             }
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para deletar postagem</para>
+        /// </summary>
+        /// <param name="id">Id da postagem</param>
         public async Task DeletarPostagemAsync(int id)
         {
             _contexto.Postagens.Remove(await PegarPostagemPeloIdAsync(id));
             await _contexto.SaveChangesAsync();
         }
 
+        // Funções auxiliares
         public Task<List<Postagem>> PegarTodasPostagensAsync()
         {
             throw new NotImplementedException();

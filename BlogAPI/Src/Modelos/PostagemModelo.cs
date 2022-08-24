@@ -2,8 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 /// <summary>
-/// <para>Resumo: Classe responsavel por representar tb_postagens no banco.
-/// </ para >
+/// <para>Resumo: Classe responsável por representar tb_postagens no banco</para>
 /// <para>Criado por: Beatriz</para>
 /// <para>Versão: 1.0</para>
 /// <para>Data: 02/08/2022</para>

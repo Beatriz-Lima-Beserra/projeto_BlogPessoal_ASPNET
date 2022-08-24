@@ -32,6 +32,25 @@ namespace BlogAPI.Src.Controladores
 
         #region Métodos
 
+        /// <summary>
+        /// Criar novo Produto
+        /// </summary>
+        /// <param name="tema">Construtor para criar temas</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// POST /api/Tema
+        /// {
+        /// "Id": { 
+        ///     "Id": n°
+        /// }
+        /// "descricao": "Descrição do tema",
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="201">Retorna tema criado</response>
+        /// <response code="400">Tema não cadastrado</response>
         [HttpPost]
         public async Task<ActionResult> NovoTemaAsync([FromBody] Tema tema)
         {
@@ -45,6 +64,14 @@ namespace BlogAPI.Src.Controladores
                 return BadRequest(new { Mensagem = ex.Message });
             }
         }
+
+        /// <summary>
+        /// Pegar Todos os Temas
+        /// </summary>
+        /// <param name="tema">Todos os Temas</param>
+        /// <returns>ActionResult</returns>
+        /// <response code="200">Todos os temas</response>
+        /// <response code="404">Temas não encotrados</response>
         [HttpGet]
         public async Task<ActionResult> PegarTodosTemasAsync()
         {
@@ -55,7 +82,13 @@ namespace BlogAPI.Src.Controladores
             return Ok(lista);
         }
 
-
+        /// <summary>
+        /// Pegar Tema Pelo Id
+        /// </summary>
+        /// <param name="idTema">Id do Tema</param>
+        /// <returns>ActionResult</returns>
+        /// <response code="200">Retorna tema pelo Id</response>
+        /// <response code="404">Id do tema não pode ser nulo</response>
         [HttpGet("id/{idTema}")]
         public async Task<ActionResult> PegarTemaPeloIdAsync([FromRoute] int idTema)
         {
@@ -69,7 +102,23 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-
+        /// <summary>
+        /// Atualizar produto
+        /// </summary>
+        /// <param name="tema">Construtor para atualizar tema</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// PUT /api/tema
+        /// {
+        /// "id": n°,
+        /// "descricao": "Descricao do tema"
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="200">Retorna tema atualizado</response>
+        /// <response code="400">Tema nao localizado</response>
         [HttpPut]
         public async Task<ActionResult> AtualizarTemaAsync([FromBody] Tema tema)
         {
@@ -84,6 +133,22 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary>
+        /// Deletar Produto
+        /// </summary>
+        /// <param name="idTema">Deletar Tema</param>
+        /// <returns>ActionResult</returns>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        /// DELETE /api/Tema
+        /// {
+        /// "Id": "valor do Id",
+        /// }
+        ///
+        /// </remarks>
+        /// <response code="201">Retorna confirmação de tema deletado</response>
+        /// <response code="401">Id não encontrado</response>
         [HttpDelete("id/{idTema}")]
         public async Task<ActionResult> DeletarTemaAsync([FromRoute] int idTema)
         {

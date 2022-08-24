@@ -35,11 +35,21 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
 
         #region Métodos
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para pegar todos temas</para>
+        /// </summary>
+        /// <param name="List">Lista dos temas</param>
+        /// <return>TemaModelo</return>
         public async Task<List<Tema>> PegarTodosTemasAsync()
         {
             return await _contexto.Temas.ToListAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para pegar um tema pelo id</para>
+        /// </summary>
+        /// <param name="id">Email do usuario</param>
+        /// <return>UsuarioModelo</return>
         public async Task<Tema> PegarTemaPeloIdAsync(int id)
         {
             if (!ExisteId(id)) throw new Exception("id do Tema não encontrado");
@@ -55,7 +65,10 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
             }
         }
 
-
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para salvar um novo tema</para>
+        /// </summary>
+        /// <param name="tema">Construtor para cadastrar tema</param>
         public async Task NovoTemaAsync(Tema tema)
         {
             if (await ExisteDescricao(tema.Descricao)) throw new Exception("Descrição já existente no sistema!");
@@ -67,6 +80,12 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
             await _contexto.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para atualizar tema</para>
+        /// </summary>
+        /// <param> 'name="tema">Construtor para atualizar tema</param>
+        /// <exception cref="Exception">Tema já existe</exception>
+        /// <exception cref="Exception">Tema já existe</exception>
         public async Task AtualizarTemaAsync(Tema tema)
         {
             if (await ExisteDescricao(tema.Descricao)) throw new Exception("Descrição já existente no sistema!");
@@ -78,12 +97,17 @@ namespace BlogAPI.Src.Repositorios.Implentacoes
 
         }
 
+        /// <summary>
+        /// <para>Resumo: Método assíncrono para deletar um tema</para>
+        /// </summary>
+        /// <param name="id">Id do tema</param>
         public async Task DeletarTemaAsync(int id)
         {
             _contexto.Temas.Remove(await PegarTemaPeloIdAsync(id));
             await _contexto.SaveChangesAsync();
         }
 
+        // Funções auxiliares
         private async Task<bool> ExisteDescricao(string descricao)
         {
             var auxiliar = await _contexto.Temas.FirstOrDefaultAsync(t => t.Descricao == descricao);
